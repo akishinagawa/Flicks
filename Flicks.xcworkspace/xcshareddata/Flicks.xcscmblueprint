@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6984D0EBFE228D3FA5ECF56652EFE03F9D256347",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "6984D0EBFE228D3FA5ECF56652EFE03F9D256347" : 9223372036854775807,
+    "1F013AAE553E88FD1FCBF5F7E337A3E8D9961008" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0B48D2C6-B118-411E-A309-9A0CD1C3B912",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "6984D0EBFE228D3FA5ECF56652EFE03F9D256347" : "Flicks\/",
+    "1F013AAE553E88FD1FCBF5F7E337A3E8D9961008" : ".."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Flicks",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Flicks.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Vungle\/publisher-sample-android.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1F013AAE553E88FD1FCBF5F7E337A3E8D9961008"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/akishinagawa\/Flicks.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6984D0EBFE228D3FA5ECF56652EFE03F9D256347"
+    }
+  ]
+}
