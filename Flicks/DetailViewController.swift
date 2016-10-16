@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var infoView: UIView!
     
     var movie: NSDictionary!
+    var lowResolutionImg:UIImage!
     
     
     override func viewDidLoad() {
@@ -33,6 +34,10 @@ class DetailViewController: UIViewController {
         let overView = movie["overview"] as? String
         overviewLabel.text = overView
         overviewLabel.sizeToFit()
+        
+        
+        // set low-res image first
+        posterImageView.image = lowResolutionImg
         
         let baseUrl = "https://image.tmdb.org/t/p/w500/"
         if let posterPath = movie["poster_path"] as? String {

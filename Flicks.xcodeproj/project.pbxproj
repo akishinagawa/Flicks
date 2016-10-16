@@ -10,9 +10,9 @@
 		55242D30B2C24F86985E5268 /* Pods_Flicks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B135FDC2F011D40815A2B2 /* Pods_Flicks.framework */; };
 		A875F2A11DB2372C00637CF3 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A875F2A01DB2372C00637CF3 /* MovieCell.swift */; };
 		A875F2A31DB245AB00637CF3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A875F2A21DB245AB00637CF3 /* DetailViewController.swift */; };
+		A88901F01DB3FA3C003AAB5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A88901EF1DB3FA3C003AAB5D /* Assets.xcassets */; };
 		A8A336491DB0C00700951785 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A336481DB0C00700951785 /* AppDelegate.swift */; };
 		A8A3364E1DB0C00700951785 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8A3364C1DB0C00700951785 /* Main.storyboard */; };
-		A8A336501DB0C00700951785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8A3364F1DB0C00700951785 /* Assets.xcassets */; };
 		A8A336531DB0C00700951785 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8A336511DB0C00700951785 /* LaunchScreen.storyboard */; };
 		A8A3365B1DB0C0DE00951785 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A3365A1DB0C0DE00951785 /* MoviesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -22,10 +22,10 @@
 		9C4158953FD9E35E9ACE6EB7 /* Pods-Flicks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks/Pods-Flicks.release.xcconfig"; sourceTree = "<group>"; };
 		A875F2A01DB2372C00637CF3 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		A875F2A21DB245AB00637CF3 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		A88901EF1DB3FA3C003AAB5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8A336451DB0C00700951785 /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8A336481DB0C00700951785 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8A3364D1DB0C00700951785 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A8A3364F1DB0C00700951785 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8A336521DB0C00700951785 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8A336541DB0C00700951785 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8A3365A1DB0C0DE00951785 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 				A875F29C1DB235EB00637CF3 /* Views */,
 				A8A336481DB0C00700951785 /* AppDelegate.swift */,
 				A8A3364C1DB0C00700951785 /* Main.storyboard */,
-				A8A3364F1DB0C00700951785 /* Assets.xcassets */,
+				A88901EF1DB3FA3C003AAB5D /* Assets.xcassets */,
 				A8A336511DB0C00700951785 /* LaunchScreen.storyboard */,
 				A8A336541DB0C00700951785 /* Info.plist */,
 			);
@@ -174,7 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8A336531DB0C00700951785 /* LaunchScreen.storyboard in Resources */,
-				A8A336501DB0C00700951785 /* Assets.xcassets in Resources */,
+				A88901F01DB3FA3C003AAB5D /* Assets.xcassets in Resources */,
 				A8A3364E1DB0C00700951785 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

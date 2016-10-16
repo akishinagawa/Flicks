@@ -15,6 +15,7 @@ import MBProgressHUD
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var networkErrorView: UIView!
     
     var movies: [NSDictionary]?
     
@@ -24,6 +25,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        networkErrorView.isHidden = true
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -37,7 +39,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     func refreshControlAction(refreshControl: UIRefreshControl) {
-       loadMoviesData()
+        networkErrorView.isHidden = true
+        loadMoviesData()
     }
     
     func loadMoviesData() {
@@ -72,18 +75,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                                                                 }
                                                             }
                                                             
-                                                            MBProgressHUD.hideAllHUDs(for: self.view, animated: true)
+                                                            MBProgressHUD.hide(for: self.view, animated: true)
         });
-        task.resume()
-        
-        
+        task.resume() 
     }
     
     func showLoadErrorMessage() {
-        
-        print ("showLoadError!!!!!!!");
-        
-        
+        networkErrorView.isHidden = false
     }
     
     
@@ -115,12 +113,43 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         else {
             cell.overviewLabel.text = "no over view yet."
         }
-        cell.overviewLabel.sizeToFit()
+        //cell.overviewLabel.sizeToFit() // let's leave it trancated in table view
     
-        let baseUrl = "https://image.tmdb.org/t/p/w500/"
+//        cell.loadingLabel.isHidden = false
+        
+        
+        let baseUrl = "https://image.tmdb.org/t/p/w92/"    //availble size in poster "w92","w154","w185","w342","w500","w780"
         if let posterPath = movie["poster_path"] as? String {
             let posterUrl = URL(string: baseUrl + posterPath)
-            cell.posterView.setImageWith(posterUrl!)
+            let posterUrlRequest = URLRequest(url: posterUrl!)
+            
+            cell.loadingLabel.isHidden = true
+            
+            cell.posterView.setImageWith(
+                posterUrlRequest,
+                placeholderImage: nil,
+                success: { (imageRequest, imageResponse, image) -> Void in
+                    // imageResponse will be nil if the image is cached
+                    if imageResponse != nil {
+                        print("Image was NOT cached, fade in image")
+                        cell.posterView.alpha = 0.0
+                        cell.posterView.image = image
+                        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                            cell.posterView.alpha = 1.0
+                        })
+                    } else {
+                        print("Image was cached so just update the image")
+                        cell.posterView.image = image
+                    }
+                },
+                failure: { (imageRequest, imageResponse, error) -> Void in
+                    cell.loadingLabel.isHidden = true
+                    cell.posterView.image = UIImage(named: "no_image.png")
+            })
+        }
+        else {
+            cell.loadingLabel.isHidden = true
+            cell.posterView.image = UIImage(named: "no_image.png")
         }
 
         print("row \(indexPath.row)")
@@ -135,7 +164,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepare for seque called")
@@ -145,7 +173,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let movie = movies![indexPath!.row]
         let detailViewController = segue.destination as! DetailViewController
 
+        // pass low resolution image for showing while loading a large iamge
+        if let LowResImg = (cell as! MovieCell).posterView.image {
+            detailViewController.lowResolutionImg = LowResImg
+        }
+
         detailViewController.movie = movie
+        
+        
+        
     }
 
 }
