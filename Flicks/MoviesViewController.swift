@@ -11,28 +11,35 @@ import AFNetworking
 import MBProgressHUD
 
 
-
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var networkErrorView: UIView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var movies: [NSDictionary]?
+    var searchedMovies: [NSDictionary]?
     
     var endpoint: String! = "now_playing"
     var refreshControl: UIRefreshControl!
     
+    var searchEnabled:Bool! = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.searchEnabled = false
         
         networkErrorView.isHidden = true
         tableView.dataSource = self
         tableView.delegate = self
         
-
         self.refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
+
+        searchBar.delegate = self
+        searchBar.showsSearchResultsButton = false
 
         loadMoviesData()
     }
@@ -65,11 +72,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                                                                     if let responseDictionary = try! JSONSerialization.jsonObject(
                                                                         with: data, options:[]) as? NSDictionary {
                                                                         NSLog("response: \(responseDictionary)")
-                                                                        //                                                                                    successCallback(responseDictionary)
-                                                                        
+
                                                                         self.movies = responseDictionary["results"] as? [NSDictionary]
                                                                         self.tableView.reloadData()
-                                                                        
                                                                         self.refreshControl.endRefreshing()
                                                                     }
                                                                 }
@@ -91,18 +96,33 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let movies = movies {
-            return movies.count
+        if self.searchEnabled == false {
+            if let movies = movies {
+                return movies.count
+            }
+            else {
+                return 0
+            }
         }
         else {
-            return 0
+            if let searchedMovies = searchedMovies {
+                return searchedMovies.count
+            }
+            else {
+                return 0
+            }
         }
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
 
-        let movie = movies![indexPath.row]
+        var movie = movies![indexPath.row]
+        if self.searchEnabled == true {
+            movie = searchedMovies![indexPath.row]
+        }
+
         let title = movie["title"] as! String
         let overView = movie["overview"] as! String
         
@@ -150,28 +170,68 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             cell.posterView.image = UIImage(named: "no_image.png")
         }
 
-
         // Selected BG color change
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor(red: 0.6, green: 0.42, blue: 0.11, alpha: 1.0)
         cell.selectedBackgroundView = backgroundView
         
-        
         return cell
     }
 
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.characters.count == 0 {
+            self.searchBar.endEditing(true)
+            
+            searchedMovies = []
+            self.searchEnabled = false
+            self.tableView.reloadData()
+        }
+        else{
+            self.searchEnabled = true
+            prepareSerachedData(searchText: searchText)
+        }
+    }
     
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+    }
 
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+        
+        searchedMovies = []
+        self.searchEnabled = false
+        self.tableView.reloadData()
+    }
+    
+    func prepareSerachedData(searchText: String) {
+        searchedMovies = []
+        for movieData in movies! {
+            let titleName = movieData["title"] as! String
+            if titleName.lowercased().contains(searchText.lowercased()) {
+                searchedMovies?.append(movieData)
+            }
+        }
+        
+        self.tableView.reloadData()
+    }
+    
     
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("prepare for seque called")
         
+        self.searchBar.endEditing(true)
+        
         let cell = sender as! UITableViewCell
         let indexPath = tableView.indexPath(for: cell)
-        let movie = movies![indexPath!.row]
+        
+        var movie = movies![indexPath!.row]
+        if self.searchEnabled == true {
+            movie = searchedMovies![indexPath!.row]
+        }
+        
         let detailViewController = segue.destination as! DetailViewController
 
         // pass low resolution image for showing while loading a large iamge
@@ -180,9 +240,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         }
 
         detailViewController.movie = movie
-        
-        
-        
     }
 
 }

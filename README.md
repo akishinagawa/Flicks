@@ -7,6 +7,10 @@ Time spent: 4 hours spent in total
 
 ## User Stories
 
+Note:
+- I targeted iPhone 7 screensize since I can't use "autoLayout".
+
+
 The following **required** functionality is complete:
 
 * [x] User can view a list of movies currently playing in theaters from The Movie Database.
@@ -18,7 +22,7 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 * [x] Add a tab bar for Now Playing or Top Rated movies.
 * [ ] Implement a UISegmentedControl to switch between a list view and a grid view. 
-* [ ] Add a search bar.
+* [x] Add a search bar.
 * [x] All images fade in as they are loading.
 * [x] For the large poster, load the low-res image first and switch to high-res when complete. 
 * [x] Customize the highlight and selection effect of the cell. (Chnaged Selected Color)
