@@ -3,7 +3,7 @@ CodePath - Assignment #1
 
 Submitted by: Akifumi Shinagawa
 
-Time spent: 4 hours spent in total
+Time spent: 14 hours spent in total
 
 ## User Stories
 
