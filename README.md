@@ -15,17 +15,13 @@ The following **required** functionality is complete:
 * [x] User sees an error message when there's a networking error.
 * [x] User can pull to refresh the movie list.
 
-
-
-
-
 The following **optional** features are implemented:
 * [x] Add a tab bar for Now Playing or Top Rated movies.
 * [ ] Implement a UISegmentedControl to switch between a list view and a grid view. 
 * [ ] Add a search bar.
 * [x] All images fade in as they are loading.
 * [x] For the large poster, load the low-res image first and switch to high-res when complete. 
-* [ ] Customize the highlight and selection effect of the cell. 
-* [ ] Customize the navigation bar.
+* [x] Customize the highlight and selection effect of the cell. (Chnaged Selected Color)
+* [x] Customize the navigation bar. (Chnaged BG color)
 
 

@@ -24,7 +24,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         networkErrorView.isHidden = true
         tableView.dataSource = self
         tableView.delegate = self
@@ -113,9 +113,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         else {
             cell.overviewLabel.text = "no over view yet."
         }
-        //cell.overviewLabel.sizeToFit() // let's leave it trancated in table view
-    
-//        cell.loadingLabel.isHidden = false
+        cell.loadingLabel.isHidden = false
         
         
         let baseUrl = "https://image.tmdb.org/t/p/w92/"    //availble size in poster "w92","w154","w185","w342","w500","w780"
@@ -152,12 +150,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             cell.posterView.image = UIImage(named: "no_image.png")
         }
 
-        print("row \(indexPath.row)")
+
+        // Selected BG color change
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(red: 0.6, green: 0.42, blue: 0.11, alpha: 1.0)
+        cell.selectedBackgroundView = backgroundView
+        
+        
         return cell
     }
-    
-    
-    
 
     
     

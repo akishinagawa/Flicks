@@ -17,7 +17,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" sectionHeaderHeight="28" sectionFooterHeight="28" id="uxc-hY-X4U">
                                 <frame key="frameInset" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.65098039220000004" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.93333333330000001" green="0.65098039220000004" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="160" id="bq0-4v-4QE" customClass="MovieCell" customModule="Flicks" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="375" height="160"/>
@@ -53,6 +54,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93333333333333335" green="0.65098039215686276" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="loadingLabel" destination="icS-xc-Lmh" id="avR-fm-AGX"/>
                                             <outlet property="overviewLabel" destination="0sC-sr-Hwh" id="x7K-Ng-VCg"/>
@@ -78,9 +80,12 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.65098039215686276" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.60240384615384612" green="0.41927180687262672" blue="0.10979912940057468" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Movies" id="lb8-fO-nK7"/>
+                    <navigationItem key="navigationItem" title="Movies" id="lb8-fO-nK7">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Kcg-3z-JDi"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="networkErrorView" destination="xpJ-JW-Yxh" id="79h-v0-lZJ"/>
                         <outlet property="tableView" destination="uxc-hY-X4U" id="BKA-kU-HbG"/>
@@ -90,7 +95,7 @@
             </objects>
             <point key="canvasLocation" x="672.5" y="154.5"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Movie Detail-->
         <scene sceneID="5Ec-2P-1DY">
             <objects>
                 <viewController id="wPP-Cy-ldi" customClass="DetailViewController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,7 +111,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="609"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" id="sTb-n0-Mno">
+                                    <view contentMode="scaleToFill" misplaced="YES" id="sTb-n0-Mno">
                                         <rect key="frame" x="0.0" y="609" width="375" height="283"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
@@ -114,25 +119,23 @@
                                                 <frame key="frameInset" minX="22" minY="15" width="330" height="23"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="web-dY-wsM">
                                                 <frame key="frameInset" minX="22" minY="44" width="330" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.93333333333333335" green="0.65098039215686276" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6Km-3B-jO1"/>
+                    <navigationItem key="navigationItem" title="Movie Detail" id="6Km-3B-jO1"/>
                     <connections>
                         <outlet property="infoView" destination="sTb-n0-Mno" id="4sv-lL-l6G"/>
                         <outlet property="overviewLabel" destination="web-dY-wsM" id="Sln-TN-UVn"/>
@@ -153,6 +156,13 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JBf-RH-Ty1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.65098039220000004" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.93333333330000001" green="0.65098039220000004" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -169,4 +179,5 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
     </simulatedMetricsContainer>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
