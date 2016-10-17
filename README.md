@@ -35,6 +35,8 @@ The following **optional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/Hhn78tY.gif' title='Flicks Video Walkthrough' width='' alt='Flicks Video Walkthrough' />
+<img src='http://www.blurryblue.com/samples/TipCalculator_sample.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -44,7 +46,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright [2016] [CodePath - AKifumi Shinagawa]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
